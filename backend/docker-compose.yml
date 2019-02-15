@@ -1,4 +1,6 @@
 version: '3'
 services:
   pbx:
-    image: dougbtv/asterisk13
+    build: .
+    volumes:
+      - './keys:/etc/asterisk/keys'
