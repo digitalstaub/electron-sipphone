@@ -1,0 +1,12 @@
+version: '3'
+services:
+  pbx:
+    build: backend
+    volumes:
+      - './backend/keys:/etc/asterisk/keys'
+      - './backend/etc/asterisk/http.conf:/etc/asterisk/http.conf'
+      - './backend/etc/asterisk/sip.conf:/etc/asterisk/sip.conf'
+      - './backend/etc/asterisk/extensions.conf:/etc/asterisk/extensions.conf'
+
+    ports:
+      - 8089:8089
