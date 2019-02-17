@@ -23,9 +23,7 @@ export default class App extends React.Component<Props> {
         iceRestart={false} // force ICE session to restart on every WebRTC call; false by default
         sessionTimersExpires={120} // value for Session-Expires header; 120 by default
         // iceServers={[
-        //   // optional
-        //   { urls: ['stun:a.example.com', 'stun:b.example.com'] },
-        //   { urls: 'turn:example.com', username: 'foo', credential: '1234' }
+        //   { urls: 'stun:stun.l.google.com', port:19302 }
         // ]}
         debug // whether to output events to console; false by default
       >
