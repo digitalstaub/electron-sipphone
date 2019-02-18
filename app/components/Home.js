@@ -1,7 +1,6 @@
 // @flow
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import PropTypes from 'prop-types';
 import routes from '../constants/routes';
 import styles from './Home.css';
 
@@ -10,14 +9,7 @@ type Props = {};
 export default class Home extends Component<Props> {
   props: Props;
 
-  static contextTypes = {
-    startCall: PropTypes.func
-  };
-
-  call = () => {
-    const { startCall } = this.context;
-    startCall('200');
-  };
+  call = () => {};
 
   render() {
     return (
