@@ -1,5 +1,5 @@
 import React from 'react';
-import { reduxForm, Field } from 'redux-form';
+import { reduxForm, Field } from 'redux-form/immutable';
 
 type Props = {
   handleSubmit: () => void
@@ -11,15 +11,15 @@ const SettingsForm = (props: Props) => {
     <form onSubmit={handleSubmit} className="form">
       <div className="field">
         <div className="control">
-          <label className="label" htmlFor="displayName">
-            Display Name
+          <label className="label" htmlFor="socketUrl">
+            Websocket URL
             <Field
               className="input"
-              id="displayName"
-              name="displayName"
+              id="socketUrl"
+              name="socketUrl"
               component="input"
               type="text"
-              placeholder="e.g. John Doe"
+              placeholder="wss://sip.example.com"
             />
           </label>
         </div>
@@ -27,31 +27,15 @@ const SettingsForm = (props: Props) => {
 
       <div className="field">
         <div className="control">
-          <label className="label" htmlFor="privateIdentity">
-            Private Identity
+          <label className="label" htmlFor="identity">
+            Identity
             <Field
               className="input"
-              id="privateIdentity"
-              name="privateIdentity"
+              id="identity"
+              name="identity"
               component="input"
               type="text"
-              placeholder="e.g. +33600000000"
-            />
-          </label>
-        </div>
-      </div>
-
-      <div className="field">
-        <div className="control">
-          <label className="label" htmlFor="publicIdentity">
-            Public Identity
-            <Field
-              className="input"
-              id="publicIdentity"
-              name="publicIdentity"
-              component="input"
-              type="text"
-              placeholder="e.g. sip:+33600000000@doubango.org"
+              placeholder="sip:alice@example.com"
             />
           </label>
         </div>
@@ -67,23 +51,7 @@ const SettingsForm = (props: Props) => {
               name="password"
               component="input"
               type="password"
-              placeholder="Password"
-            />
-          </label>
-        </div>
-      </div>
-
-      <div className="field">
-        <div className="control">
-          <label className="label" htmlFor="realm">
-            Realm
-            <Field
-              className="input"
-              id="realm"
-              name="realm"
-              component="input"
-              type="text"
-              placeholder="e.g. doubango.org"
+              placeholder="superpassword"
             />
           </label>
         </div>
@@ -101,5 +69,6 @@ const SettingsForm = (props: Props) => {
 };
 
 export default reduxForm({
-  form: 'settings'
+  form: 'settings',
+  destroyOnUnmount: false
 })(SettingsForm);

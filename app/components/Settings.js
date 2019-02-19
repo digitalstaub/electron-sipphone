@@ -4,12 +4,9 @@ import { Link } from 'react-router-dom';
 import SettingsForm from './SettingsForm';
 import styles from './Settings.css';
 import routes from '../constants/routes';
+import { UAContext } from '../containers/App';
 
-export default class Counter extends Component {
-  submit = values => {
-    console.log(values);
-  };
-
+export default class Settings extends Component {
   render() {
     return (
       <div>
@@ -19,7 +16,9 @@ export default class Counter extends Component {
           </Link>
         </div>
         <div className={`counter ${styles.counter}`} data-tid="counter">
-          <SettingsForm onSubmit={this.submit} />
+          <UAContext.Consumer>
+            {({ register }) => <SettingsForm onSubmit={register} />}
+          </UAContext.Consumer>
         </div>
       </div>
     );

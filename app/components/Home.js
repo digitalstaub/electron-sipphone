@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import routes from '../constants/routes';
 import styles from './Home.css';
+import { UAContext } from '../containers/App';
 
 type Props = {};
 
@@ -17,9 +18,18 @@ export default class Home extends Component<Props> {
         <h2>Home</h2>
         <Link to={routes.SETTINGS}>to Settings</Link>
         <br />
-        <button type="button" onClick={this.call}>
-          call 200
-        </button>
+        <UAContext.Consumer>
+          {({ call }) => (
+            <button
+              type="button"
+              onClick={() => {
+                call('200');
+              }}
+            >
+              call 200
+            </button>
+          )}
+        </UAContext.Consumer>
       </div>
     );
   }
