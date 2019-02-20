@@ -3206,6 +3206,17 @@ concurrently@^4.1.0:
     tree-kill "^1.1.0"
     yargs "^12.0.1"
 
+conf@^2.0.0:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/conf/-/conf-2.2.0.tgz#ee282efafc1450b61e205372041ad7d866802d9a"
+  integrity sha512-93Kz74FOMo6aWRVpAZsonOdl2I57jKtHrNmxhumehFQw4X8Sk37SohNY11PG7Q8Okta+UnrVaI006WLeyp8/XA==
+  dependencies:
+    dot-prop "^4.1.0"
+    env-paths "^1.0.0"
+    make-dir "^1.0.0"
+    pkg-up "^2.0.0"
+    write-file-atomic "^2.3.0"
+
 configstore@^3.0.0:
   version "3.1.2"
   resolved "https://registry.npmjs.org/configstore/-/configstore-3.1.2.tgz#c6f25defaeef26df12dd33414b001fe81a543f8f"
@@ -4153,6 +4164,13 @@ electron-publish@20.33.2:
     fs-extra-p "^7.0.0"
     lazy-val "^1.0.3"
     mime "^2.3.1"
+
+electron-store@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/electron-store/-/electron-store-2.0.0.tgz#1035cca2a95409d1f54c7466606345852450d64a"
+  integrity sha512-1WCFYHsYvZBqDsoaS0Relnz0rd81ZkBAI0Fgx7Nq2UWU77rSNs1qxm4S6uH7TCZ0bV3LQpJFk7id/is/ZgoOPA==
+  dependencies:
+    conf "^2.0.0"
 
 electron-to-chromium@^1.3.47, electron-to-chromium@^1.3.82:
   version "1.3.82"
@@ -8579,6 +8597,13 @@ pkg-dir@^3.0.0:
   dependencies:
     find-up "^3.0.0"
 
+pkg-up@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/pkg-up/-/pkg-up-2.0.0.tgz#c819ac728059a461cab1c3889a2be3c49a004d7f"
+  integrity sha1-yBmscoBZpGHKscOImivjxJoATX8=
+  dependencies:
+    find-up "^2.1.0"
+
 please-upgrade-node@^3.0.2, please-upgrade-node@^3.1.1:
   version "3.1.1"
   resolved "https://registry.npmjs.org/please-upgrade-node/-/please-upgrade-node-3.1.1.tgz#ed320051dfcc5024fae696712c8288993595e8ac"
@@ -9501,6 +9526,16 @@ redux-logger@^3.0.6:
   resolved "https://registry.npmjs.org/redux-logger/-/redux-logger-3.0.6.tgz#f7555966f3098f3c88604c449cf0baf5778274bf"
   dependencies:
     deep-diff "^0.3.5"
+
+redux-persist-electron-storage@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/redux-persist-electron-storage/-/redux-persist-electron-storage-2.1.0.tgz#8e9c2d4aeb451a5e00786456efed2f3d3f03dfa8"
+  integrity sha512-8VhAttDPqrwZlGIiHB3/PzZZChCliom8qcex8Q+eW3lHpSMkbqAaYpoedRm29e3FoVnan3VT+UV22NGFXKPmCg==
+
+redux-persist@^5.10.0:
+  version "5.10.0"
+  resolved "https://registry.yarnpkg.com/redux-persist/-/redux-persist-5.10.0.tgz#5d8d802c5571e55924efc1c3a9b23575283be62b"
+  integrity sha512-sSJAzNq7zka3qVHKce1hbvqf0Vf5DuTVm7dr4GtsqQVOexnrvbV47RWFiPxQ8fscnyiuWyD2O92DOxPl0tGCRg==
 
 redux-thunk@^2.3.0:
   version "2.3.0"
@@ -11935,6 +11970,15 @@ wrappy@1:
 write-file-atomic@^2.0.0, write-file-atomic@^2.1.0:
   version "2.3.0"
   resolved "https://registry.npmjs.org/write-file-atomic/-/write-file-atomic-2.3.0.tgz#1ff61575c2e2a4e8e510d6fa4e243cce183999ab"
+  dependencies:
+    graceful-fs "^4.1.11"
+    imurmurhash "^0.1.4"
+    signal-exit "^3.0.2"
+
+write-file-atomic@^2.3.0:
+  version "2.4.2"
+  resolved "https://registry.yarnpkg.com/write-file-atomic/-/write-file-atomic-2.4.2.tgz#a7181706dfba17855d221140a9c06e15fcdd87b9"
+  integrity sha512-s0b6vB3xIVRLWywa6X9TOMA7k9zio0TMOsl9ZnDkliA/cfJlpHXAscj0gbHVJiTdIuAYpIyqS5GW91fqm6gG5g==
   dependencies:
     graceful-fs "^4.1.11"
     imurmurhash "^0.1.4"
