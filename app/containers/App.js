@@ -4,7 +4,15 @@ import JsSIP from 'jssip';
 import { connect } from 'react-redux';
 import { getFormValues } from 'redux-form';
 
-export const UAContext = React.createContext();
+const defaultVal = {
+  register: () => {},
+  call: () => {}
+};
+type obj = {
+  register: ({ socketUrl: string, identity: string, password: string }) => void,
+  call: (dest: string) => void
+};
+export const UAContext: React.Context<obj> = React.createContext(defaultVal);
 
 const defaultOptions = {
   mediaConstraints: { audio: true, video: false },
@@ -26,6 +34,10 @@ type Props = {
 class App extends React.Component<Props> {
   props: Props;
 
+  ua: any;
+
+  remoteAudio: HTMLAudioElement;
+
   constructor(props) {
     super(props);
     this.ua = null;
@@ -34,18 +46,8 @@ class App extends React.Component<Props> {
     window.document.body.appendChild(this.remoteAudio);
   }
 
-  componentDidMount() {
-    const settings = {
-      socketUrl: 'wss://192.168.99.100:8089/ws',
-      identity: 'sip:1060@192.168.99.100',
-      password: 'password'
-    };
-
-    this.register(settings);
-  }
-
   componentWillUnmount() {
-    this.remoteAudio.parentNode.removeChild(this.remoteAudio);
+    // this.remoteAudio.parentNode.removeChild(this.remoteAudio);
     delete this.remoteAudio;
     if (this.ua) {
       this.ua.stop();
@@ -55,17 +57,19 @@ class App extends React.Component<Props> {
 
   register = values => {
     JsSIP.debug.disable('JsSIP:*');
-    const socket = new JsSIP.WebSocketInterface(values.socketUrl);
+    const { socketUrl, identity, password } = values;
+    const socket = new JsSIP.WebSocketInterface(socketUrl);
     const configuration = {
       sockets: [socket],
-      uri: values.identity,
-      password: values.password,
+      uri: identity,
+      password,
       register: true
     };
     this.ua = new JsSIP.UA(configuration);
     this.ua.on('newRTCSession', ({ session }) => {
       console.log('newRTCSession');
       session.connection.addEventListener('addstream', () => {
+        // $FlowFixMe
         [this.remoteAudio.srcObject] = session.connection.getRemoteStreams();
         this.remoteAudio.play();
       });
@@ -84,14 +88,10 @@ class App extends React.Component<Props> {
   };
 
   render() {
+    const { register, call } = this;
     const { children } = this.props;
     return (
-      <UAContext.Provider
-        value={{
-          register: this.register,
-          call: this.call
-        }}
-      >
+      <UAContext.Provider value={{ register, call }}>
         <React.Fragment>{children}</React.Fragment>
       </UAContext.Provider>
     );

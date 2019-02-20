@@ -7,10 +7,10 @@ import { UAContext } from '../containers/App';
 
 type Props = {};
 
+// type callType = () => void
+
 export default class Home extends Component<Props> {
   props: Props;
-
-  call = () => {};
 
   render() {
     return (
